@@ -16,7 +16,7 @@
 			<div class="row">
 				<div class="col-md-3 col-sm-4 col-xs-12">
 					<a href="#" class="logo">
-						<img alt="Logo" src="images/logo.png" />
+						<img alt="Logo" src="<?=  PUBLIC_URL ?> /images/logo.png" />
 					</a>
 				</div>
 			</div>

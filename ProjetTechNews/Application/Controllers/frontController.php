@@ -17,8 +17,10 @@ class frontController {
 
 
     // -- Récupération des paramètres
+/*
     $controller = $params['controller'] ;
     $action     = $params['action'] ;
+
 
     if($controller == 'news' AND $action == 'business' ){
         echo 'Je suis dans BUSINESS NEW' ;
@@ -31,7 +33,34 @@ class frontController {
     if($controller == 'news' AND $action == 'tech' ){
     echo 'Je suis dans TECH NEW' ;
     }
+*/
+    $controller = 'Application\Controllers\\' . $params['controller'] . 'Controller' ; // ici c'est newsControlleur
+    $action     = $params['action'] ;  // ici c'est business
 
+    if(file_exists(RACINE_SITE . '\\' . $controller. '.php')){
+        // Excution de mon action
+        $obj = new $controller ;
+
+
+        // -- Si la méthode existe dans mon controller alors je peux exécuter mon action.
+        if (method_exists($obj, $action)) {
+              // Execution de mon action
+              $obj->$action();
+        }
+        else
+        {
+           // -- Sinon la méthode n'existe pas, donc je renvoie une erreur 404.
+           //echo '<h1>404 : Action introuvable</h1>' ;
+           include_once VIEW_SITE . '/errors/404.php ' ;
+
+        } // FIN if (method_exists($obj, $action))
+    }
+    else
+    {
+        //echo '<h1>404 : Controleur introuvable</h1>' ;
+        include_once VIEW_SITE . '/errors/404.php ' ;
+
+    } // FIN if(file_exists(RACINE_SITE . '\\' . $controller. '.php'))
 
   } // FIN public function __construct($params)
 
