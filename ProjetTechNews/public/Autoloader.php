@@ -7,7 +7,7 @@ class Autoloader {
       }
 
       public static function autoload($class) {
-          //print_r($class) ;
+          debug($class) ;
           require RACINE_SITE.'/'.$class . '.php' ; // Le nom de la classe c'ext le nom du fichier.php correspondant
 
       } // FIN public static function autoload($class)

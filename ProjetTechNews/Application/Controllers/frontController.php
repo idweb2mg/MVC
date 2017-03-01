@@ -1,13 +1,17 @@
 <?php
-
+/*
+=================================================
+frontController.php
+=================================================
+*/
 namespace Application\Controllers ;
 // Appel des espaces de nom : c'est le chemin ou se trouve le fichier correspondant sinon il ne le trouve params
 
 
-class frontController {
+class frontController extends \Application\Controllers\appController {
 
   public function __construct($params) {
-      print_r($params) ;
+      //debug($params) ;
 
       if(empty($params)){
         $params['controller'] = 'news' ;
@@ -51,14 +55,16 @@ class frontController {
         {
            // -- Sinon la méthode n'existe pas, donc je renvoie une erreur 404.
            //echo '<h1>404 : Action introuvable</h1>' ;
-           include_once VIEW_SITE . '/errors/404.php ' ;
+           //include_once VIEW_SITE . '/errors/404.php ' ;
+           $this->render('errors/404', ['erreur' => 'Aucune vue trouvée']) ;
 
         } // FIN if (method_exists($obj, $action))
     }
     else
     {
         //echo '<h1>404 : Controleur introuvable</h1>' ;
-        include_once VIEW_SITE . '/errors/404.php ' ;
+        //include_once VIEW_SITE . '/errors/404.php ' ;
+        $this->render('errors/404', ['erreur' => 'Aucun controleur trouvé']) ;
 
     } // FIN if(file_exists(RACINE_SITE . '\\' . $controller. '.php'))
 

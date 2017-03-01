@@ -25,7 +25,12 @@ puisque l'include est fait par l'Autoloader et il va chercher lui-même le bon f
 
 */
 
+/*
+-------------------------------------------------------
+Instruction suivante à déplacer dans appController.php
+-------------------------------------------------------
 require HEADER_SITE ;
+*/
 
 //echo RACINE_SITE ;
 
@@ -33,5 +38,9 @@ require HEADER_SITE ;
 $frontController = new frontController($_GET) ;
 
 
-
+/*
+-------------------------------------------------------
+Instruction suivante à déplacer  dans appController.php
+-------------------------------------------------------
 require FOOTER_SITE ;
+*/
